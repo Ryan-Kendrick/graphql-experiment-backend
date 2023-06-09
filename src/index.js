@@ -16,6 +16,11 @@ const resolvers = {
     info: () => `This is the API of a Hackernews Clone`,
 
     feed: () => links,
+    link: (parent, args) => {
+      const link = links.filter((args) => id === args.id)
+      const post = link.id
+      return post
+    },
   },
   Mutation: {
     post: (parent, args) => {
@@ -23,7 +28,7 @@ const resolvers = {
 
       const link = {
         id: `link-${idCount++}`,
-        description: args.description,
+        descriptions: args.description,
         url: args.url,
       }
       links.push(link)
