@@ -17,9 +17,8 @@ const resolvers = {
 
     feed: () => links,
     link: (parent, args) => {
-      const link = links.filter((args) => id === args.id)
-      const post = link.id
-      return post
+      const data = links.find((link) => link.id === args.id)
+      return data
     },
   },
   Mutation: {
@@ -28,7 +27,7 @@ const resolvers = {
 
       const link = {
         id: `link-${idCount++}`,
-        descriptions: args.description,
+        description: args.description,
         url: args.url,
       }
       links.push(link)
