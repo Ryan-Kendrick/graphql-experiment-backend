@@ -8,7 +8,7 @@ const resolvers = {
     info: () => `This is the API of a Hackernews Clone`,
 
     feed: async (parent, args, context) => {
-      return context.prims.link.findMany()
+      return context.prisma.link.findMany()
     },
     link: (parent, args) => {
       const data = links.find((link) => link.id === args.id)
